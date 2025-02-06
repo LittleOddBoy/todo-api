@@ -23,5 +23,15 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
     "typescript": "^5.7.3"
-  }
+  },
+  "contributors": [
+    {
+      "name": "Mohammad erfan Atashrou",
+      "email": "meatish2008@gmail.com"
+    },
+    {
+      "name": "Amirhosein Kalari",
+      "email": "hosein.kalari.1387@gmail.com"
+    }
+  ]
 }
