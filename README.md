@@ -9,7 +9,7 @@ If you want to use this API, we designed a CLI tool called [todo-cli](https://gi
 
 ## Maintenance to-do
 
-- [ ] handle _user authentication_. (both)
+- [X] handle _user authentication_. (both)
 - [ ] build an endpoint to _remove_ a task. (assigned to **ME-AT**)
 - [ ] build an endpoint to _update_ a task.
 - [X] build an endpoint to _read_ all the task. (assigned to **ME-AT**)
