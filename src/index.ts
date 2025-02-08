@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as dotenv from "dotenv";
 import todoRoute from "./routes/todo.routes";
+import userRoute from "./routes/user.routes";
 import * as mongoose from "./config/db";
 
 dotenv.config();
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/todos", todoRoute);
+app.use("/users", userRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the To-Do List API!");
