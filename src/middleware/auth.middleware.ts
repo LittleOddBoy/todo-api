@@ -3,12 +3,12 @@ import * as jwt from "jsonwebtoken";
 
 const SECRET_CODE = "abcd";
 
-export interface AuthorizationRequest extends Request {
+export interface AuthenticatedRequest extends Request {
   id?: jwt.JwtPayload | string | number;
 }
 
 export const authorization = async (
-  req: AuthorizationRequest,
+  req: AuthenticatedRequest,
   res: Response,
   next: NextFunction
 ) => {
@@ -22,9 +22,9 @@ export const authorization = async (
     return;
   }
 
-  jwt.verify(authHeader as string, SECRET_CODE, (err, id) => {
+  jwt.verify(authHeader as string, SECRET_CODE, (err, userdata: any) => {
     if (err) res.status(400).json({ message: "You are a lier!" });
-    req.id = id;
+    req.id = userdata["id"];
     next();
   });
 };
