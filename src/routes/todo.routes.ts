@@ -3,8 +3,7 @@ import { getTodos, createTodo } from "../controllers/todo.controller";
 
 const router = Router();
 
-router.get("/todos", getTodos);
-router.post("/todos", createTodo);
+router.get("/", getTodos);
+router.post("/", createTodo);
 
 export default router;
-
