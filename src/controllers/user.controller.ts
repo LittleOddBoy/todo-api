@@ -21,4 +21,23 @@ export const signup = async (req: Request, res: Response) => {
   }
 };
 
-export const login = (req: Request, res: Response) => {};
+export const login = async (req: Request, res: Response) => {
+  try {
+    const { username, password } = req.body;
+    const user = await UserModel.find({ username });
+    if (user.length == 0) {
+      res.status(404).json({ message: "There is no such user" });
+    }
+
+    if (!(await argon2.verify(user[0].password, password))) {
+      res.status(400).json({ message: "Password is wrong" });
+    }
+
+    const payload = { username };
+    const token = jwt.sign(payload, SECRET_CODE);
+
+    res.status(200).json({ token });
+  } catch {
+    res.status(400).json({ message: "Bad request" });
+  }
+};
