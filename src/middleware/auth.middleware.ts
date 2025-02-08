@@ -16,12 +16,14 @@ export const authorization = async (
   const token = authHeader && authHeader.split(".")[1];
 
   if (!token) {
-    res.send("خاک به سرت کنن");
+    res
+      .status(400)
+      .json({ message: "There is no authorization token provided" });
     return;
   }
 
   jwt.verify(authHeader as string, SECRET_CODE, (err, id) => {
-    if (err) res.send("ای دروغگو!");
+    if (err) res.status(400).json({ message: "You are a lier!" });
     req.id = id;
     next();
   });
