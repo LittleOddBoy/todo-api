@@ -12,7 +12,7 @@ export const signup = async (req: Request, res: Response) => {
     const newUser = new UserModel({ username, password: hashedPassword });
     await newUser.save();
 
-    const payload = { username };
+    const payload = { id: newUser._id };
     const token = jwt.sign(payload, SECRET_CODE);
 
     res.status(200).json({ token });
@@ -33,7 +33,7 @@ export const login = async (req: Request, res: Response) => {
       res.status(400).json({ message: "Password is wrong" });
     }
 
-    const payload = { username };
+    const payload = { id: user[0]._id };
     const token = jwt.sign(payload, SECRET_CODE);
 
     res.status(200).json({ token });
