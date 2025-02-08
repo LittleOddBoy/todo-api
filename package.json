@@ -15,18 +15,21 @@
   "author": "Amirhossein Kalari <hosein.kalari.1387@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "argon2": "^0.41.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.8",
     "@types/node": "^22.13.1",
     "typescript": "^5.7.3"
   },
   "contributors": [
     {
-      "name": "Mohammad erfan Atashrou",
+      "name": "Mohammad Erfan Atashrou",
       "email": "meatish2008@gmail.com"
     },
     {
