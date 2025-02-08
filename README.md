@@ -64,3 +64,7 @@ Unfortunately, we don't have a plan to provide a better documentation for this p
 - `todos/update` with the same approach as `create`, but with the id of the task you want to update.
 - `users/signin` with your username and a password in the body of request, in order to create an account. **the response would be a private token that you may need to keep that in a good place!**
 - `users/login` again with your username and password, to log-in your account and get your token again. **don't forget to keep your token safe!**
+
+## Credits and license
+
+My friend and I got this project done under [MIT License](LICENSE). You must check him out! -> [ME-Atish](https://github.com/ME-Atish)
