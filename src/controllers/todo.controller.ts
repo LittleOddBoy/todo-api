@@ -7,7 +7,7 @@ export const getTodos = async (req: Request, res: Response) => {
     const todos = await TodoModel.find();
     res.json(todos);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch todos" });
+    res.status(500).json({ message: "Failed to fetch todos" });
   }
 };
 
@@ -18,6 +18,24 @@ export const createTodo = async (req: AuthenticatedRequest, res: Response) => {
     await newTodo.save();
     res.status(201).json(newTodo);
   } catch (error) {
-    res.status(500).json({ error: "Failed to create todo" });
+    res.status(500).json({ message: "Failed to create todo" });
+  }
+};
+
+export const updateTodo = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const { _id, title, completed } = req.body;
+    const updated = await TodoModel.findOneAndUpdate(
+      { _id },
+      { title, completed }
+    );
+
+    if (!updated) {
+      res.status(404).json({ message: "This is not the correct id!" });
+    }
+
+    res.status(200).json({ message: "It's all done" });
+  } catch {
+    res.status(500).json({ message: "Failed to update todo" });
   }
 };
