@@ -2,9 +2,14 @@ import { Request, Response } from "express";
 import TodoModel from "../models/todo.model";
 import { AuthenticatedRequest } from "../middleware/auth.middleware";
 
-export const getTodos = async (req: Request, res: Response) => {
-  try {
-    const todos = await TodoModel.find();
+export const getTodos = async (req: AuthenticatedRequest, res: Response) => {
+  try {    
+    const todos = await TodoModel.find({ userId: req.id });
+
+    if (!todos) {
+      res.status(400).json({ massage: "Wrong user id " });
+    }
+
     res.json(todos);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch todos" });
