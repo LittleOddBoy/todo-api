@@ -10,9 +10,9 @@ If you want to use this API, we designed a CLI tool called [todo-cli](https://gi
 ## Maintenance to-do
 
 - [x] handle _user authentication_. (both)
-- [ ] build an endpoint to _remove_ a task. (assigned to **ME-AT**)
+- [x] build an endpoint to _remove_ a task. (assigned to **ME-AT**)
 - [x] build an endpoint to _update_ a task.
-- [ ] build an endpoint to _read_ all the task. (assigned to **ME-AT**)
+- [x] build an endpoint to _read_ all the task. (assigned to **ME-AT**)
 - [x] build the README file.
 - [ ] ~~build an appropriate API document.~~
   - Due to project paradigm being functional, and low possibilities for `express`.
@@ -59,8 +59,8 @@ It's okay if you don't pay attention to this file, because we have some defaults
 Unfortunately, we don't have a plan to provide a better documentation for this project—at least for now. But in overall, there are certain endpoints you could run:
 
 - `todos/create` with a JSON as the body of your request, contains only the title and the completed status of the task, first one as _string_ and second as _boolean_.
-- `todos/read` _UNDER DEVELOPMENT_
-- `todos/remove` _UNDER DEVELOPMENT_
+- `todos/read` that automatically responses with your todos.
+- `todos/remove` with a JSON as the body contains the ID of your task you wanna delete.
 - `todos/update` with the same approach as `create`, but with the id of the task you want to update.
 - `users/signin` with your username and a password in the body of request, in order to create an account. **the response would be a private token that you may need to keep that in a good place!**
 - `users/login` again with your username and password, to log-in your account and get your token again. **don't forget to keep your token safe!**
