@@ -39,3 +39,18 @@ export const updateTodo = async (req: AuthenticatedRequest, res: Response) => {
     res.status(500).json({ message: "Failed to update todo" });
   }
 };
+
+export const removeTodos = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const { _id } = req.body;
+    const removeTodo = await TodoModel.findByIdAndDelete({ _id });
+    if (!removeTodo)
+      res.status(404).send({ massage: "This is not the correct id!" });
+    res.status(200).send({ massage: "Delete to do successfully" });
+  } catch (error) {
+    res.status(400).send({
+      massage:
+        "Error in deleting todo; make sure send correct Id or something like that",
+    });
+  }
+};
